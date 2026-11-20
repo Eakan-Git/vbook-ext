@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "name": "Mê Truyện Chữ (Full TOC)",
+    "author": "Eakan",
+    "version": 1,
+    "source": "https://metruyenchu.com.vn",
+    "description": "metruyenchu.com.vn — đủ mục lục cho truyện >400 chương, có giới hạn tốc độ",
+    "locale": "vi_VN",
+    "regexp": "(https?://)?(www\\.)?metruyenchu\\.com\\.vn/[A-Za-z0-9-]+/?",
+    "type": "novel",
+    "nsfw": false
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "thread_num": 2,
+    "delay": 1000
+  }
+}
