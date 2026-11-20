@@ -21,6 +21,7 @@ https://cdn.jsdelivr.net/gh/Eakan-Git/vbook-ext@main/plugin.json
 | Extension | Nguồn | Ghi chú |
 |---|---|---|
 | [Mê Truyện Chữ (Full TOC)](metruyenchu) | metruyenchu.com.vn | Hiển thị đủ mục lục cho truyện trên 400 chương, có giới hạn tốc độ |
+| [Tàng Thư Viện (ThaoMoc)](tangthuvien) | tangthuvien.thaomocvn.com | Mục lục đầy đủ qua API, tìm kiếm, duyệt thể loại |
 
 ## Thêm extension mới
 

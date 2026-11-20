@@ -14,6 +14,17 @@
       "description": "metruyenchu.com.vn — đủ mục lục cho truyện >400 chương, có giới hạn tốc độ",
       "type": "novel",
       "locale": "vi_VN"
+    },
+    {
+      "name": "Tàng Thư Viện (ThaoMoc)",
+      "author": "Eakan",
+      "path": "https://raw.githubusercontent.com/Eakan-Git/vbook-ext/main/tangthuvien/plugin.zip",
+      "version": 1,
+      "source": "https://tangthuvien.thaomocvn.com",
+      "icon": "https://raw.githubusercontent.com/Eakan-Git/vbook-ext/main/tangthuvien/icon.png",
+      "description": "tangthuvien.thaomocvn.com — truyện chữ, dùng API mục lục đầy đủ",
+      "type": "novel",
+      "locale": "vi_VN"
     }
   ]
 }
