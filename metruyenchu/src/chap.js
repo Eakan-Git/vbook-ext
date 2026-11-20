@@ -90,12 +90,9 @@ function execute(url) {
     if (!body) return Response.error("Không tìm thấy nội dung chương");
     body.select("script, style, ins, iframe, noscript, .ads").remove();
 
-    var out = [];
-    body.select("p").forEach(function (p) {
-        var t = p.text().trim();
-        if (t && !JUNK_RE.test(t)) out.push("<p>" + esc(t) + "</p>");
-    });
-    var html = out.length ? out.join("\n") : body.html();
-    if (!html || !String(html).trim()) return Response.error("Nội dung chương trống");
-    return Response.success(html, title);
+    var lines = htmlToLines(body.html()).filter(function (t) { return !JUNK_RE.test(t); });
+    // Many chapters repeat the chapter title as the first body line; vBook already shows it.
+    if (lines.length && title && normTitle(lines[0]) === normTitle(title)) lines.shift();
+    if (lines.length === 0) return Response.error("Nội dung chương trống");
+    return Response.success(lines.map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("\n"), title);
 }

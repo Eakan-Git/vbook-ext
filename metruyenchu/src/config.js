@@ -53,6 +53,31 @@ function http(url, options) {
     return res;
 }
 
+var ENTITIES = { amp: "&", lt: "<", gt: ">", quot: "\"", apos: "'", nbsp: " " };
+
+// Chapter bodies mix markup per book: all <p>, a <p> title followed by <br>-separated
+// text, or bare text nodes. Flatten everything to lines instead of trusting <p>.
+function htmlToLines(html) {
+    var text = String(html || "")
+        .replace(/<(script|style|noscript)[\s\S]*?<\/\1>/gi, "")
+        .replace(/<br\s*\/?>/gi, "\n")
+        .replace(/<\/?(p|div|h[1-6]|li|section|article|blockquote)[^>]*>/gi, "\n")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&#x([0-9a-f]+);/gi, function (m, h) { return String.fromCharCode(parseInt(h, 16)); })
+        .replace(/&#(\d+);/g, function (m, d) { return String.fromCharCode(parseInt(d, 10)); })
+        .replace(/&([a-z]+);/gi, function (m, n) { return ENTITIES[n.toLowerCase()] || m; });
+    var lines = [];
+    text.split("\n").forEach(function (l) {
+        l = l.replace(/[\s ]+/g, " ").trim();
+        if (l) lines.push(l);
+    });
+    return lines;
+}
+
+function normTitle(s) {
+    return String(s || "").replace(/[\s ]+/g, " ").trim().toLowerCase();
+}
+
 function esc(s) {
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
